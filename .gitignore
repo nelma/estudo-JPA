@@ -2,3 +2,4 @@
 RemoteSystemsTempFiles/
 *.zip
 contas-jpa/
+financas/bin/**/*.xml
