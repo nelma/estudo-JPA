@@ -10,7 +10,7 @@ public class TesteJPA {
 
 	public static void main(String[] args) {
 		
-		Conta conta = new Conta();
+		Conta conta= new Conta();
 		conta.setTitular("Nelma");
 		conta.setBanco("ITAU");
 		conta.setAgencia("123");
