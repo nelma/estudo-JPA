@@ -93,4 +93,8 @@ public class Movimentacao {
 	public void setCategorias(List<Categoria> categoria) {
 		this.categoria = categoria;
 	}
+
+	public void setTipoMovimentacao(TipoMovimentacao tipo) {
+		this.tipo = tipo;
+	}
 }
