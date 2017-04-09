@@ -11,6 +11,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 		
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.caelum.financas.modelo.Conta</class>
+		<class>br.com.caelum.financas.modelo.Movimentacao</class>
 		
 		
 		<properties>
@@ -22,7 +23,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 
 			<!-- Configurações específicas do Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- permite que crie as tabelas -->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- permite que crie as tabelas e não deleta nada -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
