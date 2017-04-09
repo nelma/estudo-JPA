@@ -5,28 +5,28 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.caelum.financas.modelo.Conta;
+import br.com.caelum.financas.modelo.Categoria;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.modelo.TipoMovimentacao;
 import br.com.caelum.financas.util.JPAUtil;
 
-public class TesteJPQL {
+public class TesteMovimentacaoPorCategoria {
 
 	public static void main(String[] args) {
 		
 		EntityManager manager = new JPAUtil().getEntityManager();
 		manager.getTransaction().begin();
 		
-		Conta conta = new Conta();
-		conta.setId(2);
+		Categoria categoria = new Categoria();
+		categoria.setId(2);
 		
-		//Utilizando named parameter, por convencao coloca o p
-		String jpql = "select m from Movimentacao m where m.conta = :pConta" +
-				" and m.tipo = :pTipo" +
-				" order by m.valor desc";
+		
+		String jpql = "select m from Movimentacao m join m.categoria c where c = :pCategoria " +
+				"and m.valor > 100 " +
+				" and m.tipo = :pTipoMovimentacao";
 		Query query = manager.createQuery(jpql);
-		query.setParameter("pConta", conta);
-		query.setParameter("pTipo", TipoMovimentacao.ENTRADA);
+		query.setParameter("pCategoria", categoria);
+		query.setParameter("pTipoMovimentacao", TipoMovimentacao.SAIDA);
 		
 		List<Movimentacao> resultados = query.getResultList();
 		for (Movimentacao movimentacao : resultados) {
@@ -36,6 +36,7 @@ public class TesteJPQL {
 		
 		manager.getTransaction().commit();
 		manager.close();
+		
 
 	}
 
