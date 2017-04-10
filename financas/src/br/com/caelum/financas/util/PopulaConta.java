@@ -18,9 +18,9 @@ public class PopulaConta {
 		Conta conta4 = new Conta();
 		Conta conta5 = new Conta();
 
-		conta1.setBanco("001 - BANCO DO BRASIL");
-		conta1.setNumero("16987-8");
-		conta1.setAgencia("6543");
+		//conta1.setBanco("001 - BANCO DO BRASIL");
+		//conta1.setNumero("16987-8");
+		//conta1.setAgencia("6543");
 
 		conta2.setBanco("237 - BANCO BRADESCO");
 		conta2.setNumero("86759-1");
@@ -37,13 +37,19 @@ public class PopulaConta {
 		conta5.setBanco("104 - CAIXA ECONOMICA FEDERAL");
 		conta5.setNumero("98654-3");
 		conta5.setAgencia("1234");
+		
+		Conta conta = manager.find(Conta.class,3);
+		conta.setTitular("Maria da Silva");
 
 		// persistindo as contas
-		manager.persist(conta1);
-		manager.persist(conta2);
-		manager.persist(conta3);
-		manager.persist(conta4);
-		manager.persist(conta5);
+		manager.merge(conta);
+		//manager.persist(conta2);
+		//manager.persist(conta3);
+		//manager.persist(conta4);
+		//manager.persist(conta5);
+		
+
+		
 
 		manager.getTransaction().commit();
 
