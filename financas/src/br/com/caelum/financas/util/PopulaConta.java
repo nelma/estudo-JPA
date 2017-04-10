@@ -38,8 +38,8 @@ public class PopulaConta {
 		conta5.setNumero("98654-3");
 		conta5.setAgencia("1234");
 		
-		Conta conta = manager.find(Conta.class,3);
-		conta.setTitular("Maria da Silva");
+		Conta conta = manager.find(Conta.class,5);
+		conta.setTitular("Mario da Silva");
 
 		// persistindo as contas
 		manager.merge(conta);

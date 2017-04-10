@@ -3,28 +3,24 @@ package br.com.caelum.financas.teste;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.util.JPAUtil;
 
-public class TesteMovimentacaoConta {
-
+public class TesteInserirMovimentacaoDesafio {
+	
 	public static void main(String[] args) {
 		
 		EntityManager manager = new JPAUtil().getEntityManager();
-		manager.getTransaction().begin();
 		
-		Movimentacao movimentacao = manager.find(Movimentacao.class, 3);
-		Conta conta = movimentacao.getConta();
-		System.out.println(conta.getTitular());
-		System.out.println(conta.getMovimentacao().size());
+		Conta conta = manager.find(Conta.class, 1);
+		List<Movimentacao> movimentacoes = conta.getMovimentacao();
 		
-		
-		manager.getTransaction().commit();
 		manager.close();
-
+		
+		for (Movimentacao movimentacao : movimentacoes) {
+			System.out.println("Movimentacoes: " + movimentacao.getDescricao());
+		}
 	}
-
 }

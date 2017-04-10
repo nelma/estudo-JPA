@@ -3,6 +3,7 @@ package br.com.caelum.financas.modelo;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ public class Conta {
 	private String numero;
 	
 	//nome da coluna do outro lado
+	//fetch é uma má prática
 	@OneToMany(mappedBy="conta")
 	private List<Movimentacao> movimentacao;
 	
